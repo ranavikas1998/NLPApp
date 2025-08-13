@@ -104,12 +104,24 @@ class NLPApp:
 
         if response:
             messagebox.showinfo("Success","Login successful")
+            self.home_gui()
         else:
             messagebox.showerror("error","Incorrect email/password")
 
+    def home_gui(self):
+        self.clear()
 
+        sentiment_btn=Button(self.root,text="Sentiment Analysis",width=30,height=4 ,command=self.perform_registration)
+        sentiment_btn.pack(pady=(10,10))
 
+        ner_btn=Button(self.root,text="Name Entity Recognition",width=30,height=4,command=self.perform_registration)
+        ner_btn.pack(pady=(10,10))
 
+        emotion_btn=Button(self.root,text="Emotion Prediction",width=30,height=4,command=self.perform_registration)
+        emotion_btn.pack(pady=(10,10))
+
+        logout_btn=Button(self.root,text="Logout",command=self.login_gui)
+        logout_btn.pack(pady=(10,10))
 
 nlp = NLPApp()
 
