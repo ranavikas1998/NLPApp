@@ -111,7 +111,7 @@ class NLPApp:
     def home_gui(self):
         self.clear()
 
-        sentiment_btn=Button(self.root,text="Sentiment Analysis",width=30,height=4 ,command=self.perform_registration)
+        sentiment_btn=Button(self.root,text="Sentiment Analysis",width=30,height=4 ,command=self.sentiment_gui)
         sentiment_btn.pack(pady=(10,10))
 
         ner_btn=Button(self.root,text="Name Entity Recognition",width=30,height=4,command=self.perform_registration)
@@ -122,6 +122,30 @@ class NLPApp:
 
         logout_btn=Button(self.root,text="Logout",command=self.login_gui)
         logout_btn.pack(pady=(10,10))
+
+    def sentiment_gui(self):
+        self.clear()
+
+        heading=Label(self.root,text="NLPApp",bg="#34495E",fg="white")
+        heading.pack(pady=(30,30))
+        heading.configure(font=("verdana",24,"bold"))
+
+        heading2 = Label(self.root, text="Sentiment Analysis", bg="#34495E", fg="white")
+        heading2.pack(pady=(30, 30))
+        heading2.configure(font=("verdana", 20))
+
+        label1=Label(self.root,text="Enter the text")
+        label1.pack(pady=(10,10))
+
+        self.sentiment_input=Entry(self.root,width=50,show="*")
+        self.sentiment_input.pack(pady=(5,10),ipady=4)
+
+        sentiment_btn=Button(self.root,text="Analyze Sentiment", command=self.login_gui)
+        sentiment_btn.pack(pady=(10,10))
+
+
+
+
 
 nlp = NLPApp()
 
