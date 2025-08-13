@@ -35,7 +35,7 @@ class NLPApp:
         self.password_input=Entry(self.root,width=50,show="*")  # show * means  encrypted password
         self.password_input.pack(pady=(5,10),ipady=4)
 
-        login_btn=Button(self.root,text="login",width=30,height=2)
+        login_btn=Button(self.root,text="login",width=30,height=2,command=self.perform_login)
         login_btn.pack(pady=(10,10))
 
         label3 = Label(self.root, text="Not a member?")
@@ -87,7 +87,7 @@ class NLPApp:
     def perform_registration(self):
         # fetch  data from gui
         name=self.name_input.get()
-        email=self.name_input.get()
+        email=self.email_input.get()
         password=self.password_input.get()
 
         response =self.dbo.add_data(name,email,password)
@@ -96,6 +96,18 @@ class NLPApp:
             messagebox.showinfo("Success","Registration successful. You can  login  now")
         else:
             messagebox.showerror("Email already exists")  # for showing message   on gui
+
+    def perform_login(self):
+        email = self.email_input.get().strip()
+        password = self.password_input.get().strip()
+        response =self.dbo.search(email,password)
+
+        if response:
+            messagebox.showinfo("Success","Login successful")
+        else:
+            messagebox.showerror("error","Incorrect email/password")
+
+
 
 
 
